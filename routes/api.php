@@ -1,7 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\{AuthController,OmborIdishController,KassaController};
+use App\Http\Controllers\Api\{
+    AuthController,
+    OmborIdishController,
+    KassaController,
+    HodimController,
+    RegionController,
+};
 
 Route::post('/login-currer', [AuthController::class, 'login_currer']); // Haydavchilar uchun
 Route::post('/login-opertor', [AuthController::class, 'login_opertor']); // Operatorlar uchun
@@ -32,6 +38,25 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/kassa-chiqim', [KassaController::class, 'kassa_chiqim']); // Kassadan chiqim qilish
     Route::post('/kassa-chiqim-success', [KassaController::class, 'kassa_chiqim_success']); // Kassadan chiqimni tasdiqlash
     Route::post('/kassa-chiqim-cancel', [KassaController::class, 'kassa_chiqim_cancel']); // Kassadan chiqimni bekor qilish
+
+});
+
+// Hodimlar
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/hodimlar', [HodimController::class, 'employees']); // Hodimlar aktiv va o'chirilgan hodimlar listi
+    Route::post('/hodim-statsus-update', [HodimController::class, 'employee_status_update']); // hodim statusini yangilash
+    Route::post('/hodim-create', [HodimController::class, 'employee_create']); // Yangi hodim qo'shish
+    Route::get('/hodim-show/{id}', [HodimController::class, 'employee']); // hodim haqida
+    Route::post('/hodim-password-update', [HodimController::class, 'employee_password_update']); // hodim parolini yangilash
+    Route::post('/hodim-add-tulov', [HodimController::class, 'employee_add_paymart']); // ish haqi to'lash
+    Route::post('/hodim-update', [HodimController::class, 'employee_update']); // hodim malumotlarini yangilash
+
+});
+// Region
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/region', [RegionController::class, 'region']); // Barcha hududlar
+    Route::post('/region-create', [RegionController::class, 'region_create']); // Yangi hududh
+    Route::post('/region-delete', [RegionController::class, 'region_delete']); // Hududni o'chirish
 
 });
 
