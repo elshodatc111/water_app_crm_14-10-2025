@@ -40,8 +40,17 @@ class User extends Authenticatable{
     public function userHistories(){
         return $this->hasMany(ScladHistory::class, 'user_id');
     }
+
     public function scladTarixes(){
         return $this->hasMany(ScladTarix::class, 'user_id', 'id');
+    }
+
+    public function operatorKlents(){
+        return $this->hasMany(Klent::class, 'operator_id');
+    }
+
+    public function currerKlents(){
+        return $this->hasMany(Klent::class, 'currer_id');
     }
 
 }

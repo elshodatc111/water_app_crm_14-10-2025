@@ -56,7 +56,7 @@
 
     <!-- Aktiv buyurtmalar -->
     <li class="nav-item">
-      <a class="nav-link {{ request()->routeIs(['active_orders']) ? '' : 'collapsed' }}" href="#">
+      <a class="nav-link {{ request()->routeIs(['aktive_kent']) ? '' : 'collapsed' }}" href="{{ route('aktive_kent') }}">
         <i class="bi bi-lightning-charge"></i>
         <span>Aktiv buyurtmalar</span>
       </a>
@@ -64,7 +64,7 @@
 
     <!-- Buyurtmalar -->
     <li class="nav-item">
-      <a class="nav-link {{ request()->routeIs(['orders']) ? '' : 'collapsed' }}" href="#">
+      <a class="nav-link {{ request()->routeIs(['end_klent']) ? '' : 'collapsed' }}" href="{{ route('end_klent') }}">
         <i class="bi bi-bag-check"></i>
         <span>Yakunlangan buyurtmalar</span>
       </a>

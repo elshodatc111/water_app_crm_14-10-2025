@@ -7,6 +7,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\HodimlarController;
 use App\Http\Controllers\ScladController;
 use App\Http\Controllers\KassaController;
+use App\Http\Controllers\KlentController;
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
@@ -40,3 +41,9 @@ Route::post('/kassa-chiqim', [KassaController::class, 'kassa_chiqim'])->middlewa
 Route::post('/kassa-chiqim-success', [KassaController::class, 'kassa_chiqim_success'])->middleware('auth')->name('kassa_chiqim_success');
 Route::post('/kassa-chiqim-cancel', [KassaController::class, 'kassa_chiqim_cancel'])->middleware('auth')->name('kassa_chiqim_cancel');
 Route::get('/kassa-history', [KassaController::class, 'history'])->middleware('auth')->name('kassa_history');
+
+
+Route::get('/klent-active', [KlentController::class, 'aktive_kent'])->middleware('auth')->name('aktive_kent');
+Route::get('/klent-active-show/{id}', [KlentController::class, 'show'])->middleware('auth')->name('kent_show');
+Route::get('/klent-end', [KlentController::class, 'end_klent'])->middleware('auth')->name('end_klent');
+Route::post('/klent-create', [KlentController::class, 'create_clent'])->middleware('auth')->name('create_clent');
