@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\{
     KassaController,
     HodimController,
     RegionController,
+    PriceController,
 };
 
 Route::post('/login-currer', [AuthController::class, 'login_currer']); // Haydavchilar uchun
@@ -57,6 +58,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/region', [RegionController::class, 'region']); // Barcha hududlar
     Route::post('/region-create', [RegionController::class, 'region_create']); // Yangi hududh
     Route::post('/region-delete', [RegionController::class, 'region_delete']); // Hududni o'chirish
+
+});
+// Narxlar
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/price', [PriceController::class, 'price']); // Narxlar
+    Route::post('/price-update', [PriceController::class, 'price_create']); // Narxlarni yangilash
 
 });
 
