@@ -56,7 +56,7 @@
 
     <!-- Aktiv buyurtmalar -->
     <li class="nav-item">
-      <a class="nav-link {{ request()->routeIs(['aktive_kent']) ? '' : 'collapsed' }}" href="{{ route('aktive_kent') }}">
+      <a class="nav-link {{ request()->routeIs(['aktive_kent','kent_show']) ? '' : 'collapsed' }}" href="{{ route('aktive_kent') }}">
         <i class="bi bi-lightning-charge"></i>
         <span>Aktiv buyurtmalar</span>
       </a>

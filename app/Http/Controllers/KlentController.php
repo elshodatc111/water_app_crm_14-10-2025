@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Klent;
+use App\Models\KlentComment;
 use App\Models\Region;
+use App\Models\User;
 
 class KlentController extends Controller{
 
@@ -19,12 +21,26 @@ class KlentController extends Controller{
     }
 
     public function end_klent(){
-        return view('klents.end');
+        return view('klent.end');
     }
     public function show($id){
+        $Klent = Klent::find($id);
+        $klent = [
+            'name'=>$Klent->name,
+            'phone'=>$Klent->phone,
+            'address'=>$Klent->address,
+            'count'=>$Klent->order_count,
+            'start'=>$Klent->start_data,
+            'operator'=>User::find($Klent->operator_id)->name,
+            'hudud'=>Region::find($Klent->region_id)->name,
+            'status'=>$Klent->status,
+            'currer_id'=>$Klent->currer_id?User::find($Klent->currer_id)->name:"-",
+            'pedding_time'=>$Klent->currer_id?$Klent->pedding_time:"-",
+            'end_time'=>$Klent->currer_id?$Klent->end_time:"-",
+        ];
+        return view('klent.show',compact('klent'));
 
 
-        
     }
 
     public function create_clent(Request $request){

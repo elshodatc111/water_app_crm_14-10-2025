@@ -143,7 +143,6 @@
             </table>
         </div>
 
-        {{-- Sahifalash --}}
         <div class="d-flex justify-content-center mt-3">
             {{ $klents->links('pagination::bootstrap-5') }}
         </div>
